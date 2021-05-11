@@ -22,4 +22,8 @@ public class LoginPage extends BasePage {
     public void openPage(){
         driver.get("https://www.saucedemo.com/");
     }
+
+    public String getLoginError() {
+        return driver.findElement(By.xpath("//*[@data-test='error']")).getText();
+    }
 }
