@@ -13,9 +13,9 @@ public class CartPage extends HeaderPage {
     private static final String PRODUCT_PRICE = PRODUCT_ITEM + "//*[@class='inventory_item_price']";
     private static final String PRODUCT_QTY = PRODUCT_ITEM + "//*[@class='cart_quantity']";
 
-
-    public void openPage() {
-        driver.get("https://www.saucedemo.com/cart.html");
+    public CartPage openPage() {
+        driver.get(CART_URL);
+        return this;
     }
 
     public String getProductPrice(String productName) {
@@ -24,5 +24,4 @@ public class CartPage extends HeaderPage {
     public String getProductQty(String productName) {
         return driver.findElement(By.xpath(String.format(PRODUCT_QTY, productName))).getText();
     }
-
 }

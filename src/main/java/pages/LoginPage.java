@@ -1,9 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.*;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 public class LoginPage extends BasePage {
 
@@ -18,22 +23,52 @@ public class LoginPage extends BasePage {
     public static final By LOGIN_ERROR = By.xpath("//*[@data-test='error']");
 
 
-    public void login(String username, String password){
+    public ProductPage login(String username, String password){
+        waitForElementLocated(USERNAME_INPUT, 10);
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
+        return new ProductPage(driver);
     }
 
-    public void openPage(){
-        driver.get("https://www.saucedemo.com/");
+    public LoginPage openPage(){
+        super.openPage(LOGIN_URL);
+        return this;
     }
 
     public String getLoginErrorText() {
         return driver.findElement(LOGIN_ERROR).getText();
     }
-    public void waitForPageOpened() {
+    //TODO
+    /*public void waitForPageOpened() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(BOT_LOGO));
+        Wait<WebDriver> fluent = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(5))
+                .ignoring(NoSuchElementException.class);
+        WebElement foo = fluent.until(driver -> driver.findElement(By.id("foo")));
+    }
+    public void waitForPageLoaded() {
+        new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
+            }
+        };
+    }
+    public boolean isElementDisplayed() {
+        List<WebElement> elementList =  driver.findElements(USERNAME_INPUT);
+        return !elementList.isEmpty();
     }
 
+    public void sendFileExample() {
+        driver.findElement(By.xpath("//input[@type='file']")).sendKeys("путь к файлу");
+        driver.findElement(By.cssSelector("Кнопка старта загрузки")).click();
+    }
+
+    public void enterIframeText() {
+        driver.switchTo().frame((WebElement) By.id("mce_0_ifr"));
+        driver.findElement(By.xpath("data-id")).sendKeys("Text");
+        driver.switchTo().defaultContent();
+    }*/
 }
