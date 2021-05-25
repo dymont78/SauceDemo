@@ -6,11 +6,11 @@ import pages.LoginPage;
 
 public class CartTest extends BaseTest {
 
-    @Test
+    @Test(retryAnalyzer = Retry.class)
     public void addProductToCartTest(){
         loginPage
                 .openPage()
-                .login("standard_user", "secret_sauce")
+                .login(System.getProperty("username"), System.getProperty("password"))
                 .addProductToCart("Sauce Labs Bolt T-Shirt")
                 .addProductToCart("Sauce Labs Backpack");
         cartPage.openPage();

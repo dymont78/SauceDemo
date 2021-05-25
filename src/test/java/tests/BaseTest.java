@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.LoginPage;
@@ -13,6 +14,8 @@ import pages.LoginPageFactory;
 import pages.ProductPage;
 
 import java.util.concurrent.TimeUnit;
+
+@Listeners(TestListener.class)
 @Test
 public class BaseTest {
     WebDriver driver;
