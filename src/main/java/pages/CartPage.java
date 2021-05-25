@@ -1,6 +1,5 @@
 package pages;
 
-import org.jsoup.Connection;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

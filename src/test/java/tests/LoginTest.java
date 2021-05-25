@@ -17,37 +17,37 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void emptyLoginTest() {
-        loginPage.openPage();
-        loginPage.login("","secret_sauce");
-        System.out.println(loginPage.getLoginErrorText());
+        loginPage
+                .openPage()
+                .login("","secret_sauce");
         Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Username is required");
     }
 
     @Test
     public void emptyPasswordTest() {
-        loginPage.openPage();
-        loginPage.login("standard_user","");
-        System.out.println(loginPage.getLoginErrorText());
+        loginPage
+                .openPage()
+                .login("standard_user","");
         Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Password is required");
     }
 
     @Test
     public void emptyLoginPasswordTest() {
-        loginPage.openPage();
-        loginPage.login("","");
-        System.out.println(loginPage.getLoginErrorText());
+        loginPage
+                .openPage()
+                .login("","");
         Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Username is required");
     }
     @Test
     public void loginFactoryTest(){
-        loginPageFactory.openPage();
-        loginPageFactory.loginFactory("standart_user", "secret_sauce");
+        loginPageFactory
+                .openPage()
+                .loginFactory("standart_user", "secret_sauce");
     }
 
     @Test
     public void demoWithoutPageFactory(){
         driver.get("http://the-internet.herokuapp.com/add_remove_elements/");
-        //driver.findElement("//button[contains(.,'Add')]");
         WebElement addButton = driver.findElement(By.xpath("//button[contains(.,'Add')]"));
         addButton.click();
         WebElement deleteButton = driver.findElement(By.xpath("//button[contains(.,'Delete')]"));
