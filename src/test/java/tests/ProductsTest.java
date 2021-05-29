@@ -12,8 +12,8 @@ public class ProductsTest extends BaseTest {
                 .login("standard_user","secret_sauce")
                 .addProductToCart("Sauce Labs Bolt T-Shirt");
         cartPage.openPage();
-        String valueQTY = cartPage.getProductQty("Sauce Labs Bolt T-Shirt");
-        Assert.assertEquals(valueQTY,"1");
+        String valueQty = cartPage.getProductQty("Sauce Labs Bolt T-Shirt");
+        Assert.assertEquals(valueQty,"1");
     }
 
     @Test
