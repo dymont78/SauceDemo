@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,7 +15,7 @@ public class LoginPage extends BasePage {
     public static final By LOGIN_BUTTON = By.xpath("//*[@id='login-button']");
     public static final By LOGIN_ERROR = By.xpath("//*[@data-test='error']");
 
-
+    @Step("Fill in {username} and {password}")
     public ProductPage login(String username, String password){
         waitForElementLocated(USERNAME_INPUT, 10);
         driver.findElement(USERNAME_INPUT).sendKeys(username);
@@ -23,6 +24,7 @@ public class LoginPage extends BasePage {
         return new ProductPage(driver);
     }
 
+    @Step("Open login page")
     public LoginPage openPage(){
         super.openPage(LOGIN_URL);
         return this;

@@ -7,21 +7,23 @@ public class ProductsTest extends BaseTest {
 
     @Test
     public void productQtyTest() {
-        loginPage
-                .openPage()
-                .login("standard_user","secret_sauce")
-                .addProductToCart("Sauce Labs Bolt T-Shirt");
+//        loginPage
+//                .openPage()
+//                .login("standard_user","secret_sauce")
+//                .addProductToCart("Sauce Labs Bolt T-Shirt");
+        productSteps.loginAndAddProduct("standard_user","secret_sauce", "Sauce Labs Bolt T-Shirt");
         cartPage.openPage();
         String valueQty = cartPage.getProductQty("Sauce Labs Bolt T-Shirt");
-        Assert.assertEquals(valueQty,"1");
+        Assert.assertEquals(valueQty,"2");
     }
 
     @Test
     public void buttonAddRemoveTest() {
-        loginPage
-                .openPage()
-                .login("standard_user", "secret_sauce")
-                .addProductToCart("Sauce Labs Backpack");
+//        loginPage
+//                .openPage()
+//                .login("standard_user", "secret_sauce")
+//                .addProductToCart("Sauce Labs Backpack");
+        productSteps.loginAndAddProduct("standard_user","secret_sauce", "Sauce Labs Backpack");
         String buttonText = productPage.getAddToCartButtonText("Sauce Labs Backpack");
         Assert.assertEquals(buttonText, "REMOVE");
 
