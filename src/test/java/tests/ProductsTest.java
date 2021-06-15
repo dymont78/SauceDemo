@@ -13,7 +13,7 @@ public class ProductsTest extends BaseTest {
                 .addProductToCart("Sauce Labs Bolt T-Shirt");
         cartPage.openPage();
         String valueQty = cartPage.getProductQty("Sauce Labs Bolt T-Shirt");
-        Assert.assertEquals(valueQty,"1");
+        Assert.assertEquals(valueQty,"2");
     }
 
     @Test
