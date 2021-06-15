@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 public class LoginTest extends BaseTest {
 
@@ -36,7 +37,8 @@ public class LoginTest extends BaseTest {
     public void loginFactoryTest() {
         loginPageFactory
                 .openPage()
-                .login(System.getenv("username"), System.getenv("password"));
+                .login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")), System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+         //       .login(System.getenv("username"), System.getenv("password"));
         //Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Username is required");
     }
 }
