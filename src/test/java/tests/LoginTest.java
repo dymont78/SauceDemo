@@ -36,8 +36,8 @@ public class LoginTest extends BaseTest {
     public void loginFactoryTest() {
         loginPageFactory
                 .openPage()
-                .login("", "secret_sauce");
-        Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Username is required");
+                .login(System.getenv("username"), System.getenv("password"));
+        //Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Username is required");
     }
 }
 
