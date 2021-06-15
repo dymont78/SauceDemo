@@ -10,7 +10,8 @@ public class CartTest extends BaseTest {
     public void addProductToCartTest(){
         loginPage
                 .openPage()
-                .login(System.getProperty("username"), System.getProperty("password"))
+//                .login(System.getProperty("username"), System.getProperty("password"))
+                .login("standard_user", "secret_sauce")
                 .addProductToCart("Sauce Labs Bolt T-Shirt")
                 .addProductToCart("Sauce Labs Backpack");
         cartPage.openPage();
