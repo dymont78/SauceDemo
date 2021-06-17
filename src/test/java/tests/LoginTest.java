@@ -38,7 +38,7 @@ public class LoginTest extends BaseTest {
         loginPageFactory
                 .openPage()
                 .login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
-                        System.getenv().getOrDefault("password", PropertyReader.getProperty("password")));
+                        "");
 //                .login(System.getProperty("username"), System.getenv("password"));
         Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Username is required");
     }
