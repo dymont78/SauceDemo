@@ -1,8 +1,5 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
@@ -40,8 +37,6 @@ public class LoginTest extends BaseTest {
                 .login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         "");
 //                .login(System.getProperty("username"), System.getenv("password"));
-        Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Username is required");
+        Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Password is required");
     }
 }
-
-
