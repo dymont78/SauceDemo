@@ -13,6 +13,7 @@ import pages.CartPage;
 import pages.LoginPage;
 import pages.LoginPageFactory;
 import pages.ProductPage;
+import steps.LoginSteps;
 import steps.ProductSteps;
 
 import java.util.concurrent.TimeUnit;
@@ -26,6 +27,7 @@ public class BaseTest {
     CartPage cartPage;
     LoginPageFactory loginPageFactory;
     ProductSteps productSteps;
+    LoginSteps loginSteps;
 
     @BeforeMethod
     public void initTest(ITestContext context) {
@@ -51,5 +53,6 @@ public class BaseTest {
         cartPage = new CartPage(driver);
         loginPageFactory = new LoginPageFactory(driver);
         productSteps = new ProductSteps(driver);
+        loginSteps = new LoginSteps(driver);
     }
 }

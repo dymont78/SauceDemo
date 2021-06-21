@@ -6,37 +6,31 @@ import utils.PropertyReader;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(description = "Check: empty login")
     public void emptyLoginTest() {
-        loginPage
-                .openPage()
-                .login("", "secret_sauce");
-        Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Username is required");
+        loginSteps.openSiteAndLogin("", "secret_sauce");
+        Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadfaceE: Username is required");
     }
 
-    @Test
+    @Test(description = "Check: empty password")
     public void emptyPasswordTest() {
-        loginPage
-                .openPage()
-                .login("standard_user", "");
+        loginSteps.openSiteAndLogin("standard_user", "");
         Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Password is required");
     }
 
-    @Test
+    @Test(description = "Check: empty login and password")
     public void emptyLoginPasswordTest() {
-        loginPage
-                .openPage()
-                .login("", "");
+        loginSteps.openSiteAndLogin("", "");
         Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Username is required");
     }
 
-    @Test
+    @Test(description = "Check: empty password (PageFactory)")
     public void loginFactoryTest() {
         loginPageFactory
                 .openPage()
                 .login(System.getenv().getOrDefault("username", PropertyReader.getProperty("username")),
                         "");
-//                .login(System.getProperty("username"), System.getenv("password"));
+ //               .login(System.getProperty("username"), System.getProperty("password"));
         Assert.assertEquals(loginPage.getLoginErrorText(), "Epic sadface: Password is required");
     }
 }
